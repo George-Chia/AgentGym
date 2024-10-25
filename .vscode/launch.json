@@ -1,0 +1,59 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "eval",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "mcts_agent/naive_eval.py",
+            "console": "integratedTerminal",
+            "cwd": "/home/zhaiyuanzhao/AgentGym",
+            // "env": {"OPENAI_API_KEY": "sk-sWtiCQni9ZuDezwF863aC4C42b6a461884Fe54B9Ee8dD3Fa"},
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "4"
+            },
+            // "args": [
+            //         ], 
+        },
+        {
+            "name": "webshop-fastchat",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "mcts_agent/run.py",
+            "console": "integratedTerminal",
+            "args": [
+                    "--backend", "Phi-3-3",
+                    "--algorithm", "simple",
+                    // "--task_start_index", "0",
+                    // "--task_end_index", "10",
+                    // "--data_split", "test",
+                    "--data_split", "test",
+                    "--part_num", "1",
+                    // "--part_idx", "0",
+                    "--n_generate_sample", "5",
+                    "--n_evaluate_sample", "1",
+                    "--prompt_sample", "cot",
+                    "--temperature", "1.0",
+                    "--iterations", "30",
+                    "--log", "logs/log-webshop.log",
+                    "--save_path", "webshop/trajectories",
+                    "--max_depth", "10",
+                    // "--enable_value_evaluation", "False",
+                    "--enable_fastchat_conv",
+                    "--enable_seq_mode",
+                    "--conv_template", "phi3"
+                    ], 
+                "justMyCode": false
+        },
+    ]
+}
